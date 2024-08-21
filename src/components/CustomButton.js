@@ -6,8 +6,9 @@ const CustomButton = (props) => {
         circle: "Record",
         play: "Review your recording"
     }
+    
     return (
-        <div className="button-wrapper">
+        <div className={`button-wrapper${props.active && props.symbol !== 'square' ? " active" : ""}`} onClick={()=> props.active ? props.setActive('') : props.setActive(props.symbol)}>
             <div className="button" style={{backgroundColor: props.color}}>
                 <div className={props.symbol} />
             </div>
