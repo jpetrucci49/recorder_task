@@ -49,6 +49,13 @@
 
 .radio-form {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.radio-buttons {
+  display: flex;
   justify-content: center;
   gap: 20px;
 }
