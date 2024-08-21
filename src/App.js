@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+import CustomButton from './components/CustomButton';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h4>Say the vocabulary words.</h4>
+      <div className="button-wrapper">
+      <CustomButton symbol="square" color="#faaf90"/>
+      <CustomButton symbol="circle" color="#69d06d"/>
+      <CustomButton symbol="play" color="#ac2020"/>
+      </div>
     </div>
   );
 }
