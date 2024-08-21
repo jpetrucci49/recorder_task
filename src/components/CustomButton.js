@@ -9,7 +9,7 @@ const CustomButton = (props) => {
     return (
         <div className="button-wrapper">
             <div className="button" style={{backgroundColor: props.color}}>
-                <div className={props.symbol}></div>
+                <div className={props.symbol} />
             </div>
             <label>{labelObj[props.symbol]}</label>
         </div>
