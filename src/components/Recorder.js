@@ -55,6 +55,9 @@ const Recorder = (props) => {
     // Method to stop recording and playing
     const clickStop = () => {
         setIsRecording(false);
+        if (isPlaying){
+            props.focusTextArea()
+        }
         setIsPlaying(false);
     };
 

@@ -8,6 +8,7 @@ const Form = (props) => {
             <div>
                 <textarea
                 id="freeform"
+                ref={props.textAreaRef}
                 name="freeformInput"
                 rows={5}
                 cols={60}
