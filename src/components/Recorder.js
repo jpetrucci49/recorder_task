@@ -38,26 +38,25 @@ const Recorder = (props) => {
             intervalId = setInterval(() => setPlayTime(playTime + 1), 10);
             setIsComplete(playMinutes >= recordMinutes && playSeconds >= recordSeconds)
         }
-        if (isComplete){
-            setIsPlaying(false);
-        }
+        isComplete && setIsPlaying(false);
+
         return () => clearInterval(intervalId);
     }, [isPlaying, playTime, recordTime, isComplete]);
 
-    // Recorded and Play minutes calculation - will apply an arbitrary 60 minute record limit
-    const recordMinutes = Math.floor((recordTime % 360000) / 6000);
-    const playMinutes = Math.floor((playTime % 360000) / 6000);
+    // Recorded and Play minutes calculation
+    const calculateMinutes = time => Math.floor((time % 360000) / 6000);
+    const recordMinutes = calculateMinutes(recordTime);
+    const playMinutes = calculateMinutes(playTime);
 
     // Recorded and Play seconds calculation
-    const recordSeconds = Math.floor((recordTime % 6000) / 100);
-    const playSeconds = Math.floor((playTime % 6000) / 100);
+    const calculateSeconds = time => Math.floor((time % 6000) / 100);
+    const recordSeconds = calculateSeconds(recordTime);
+    const playSeconds = calculateSeconds(playTime);
 
     // Method to stop recording and playing
     const clickStop = () => {
         setIsRecording(false);
-        if (isPlaying){
-            props.focusTextArea()
-        }
+        isPlaying && props.focusTextArea()
         setIsPlaying(false);
     };
 
@@ -75,12 +74,8 @@ const Recorder = (props) => {
 
     // Method to handle play clicks
     const clickPlay = () => {
-        if (isRecording){
-            clickStop();
-        }
-        if (isComplete){
-            setPlayTime(0);
-        }
+        isRecording && clickStop();
+        isComplete && setPlayTime(0);
         setIsPlaying(!isPlaying);
     };
 
@@ -91,8 +86,8 @@ const Recorder = (props) => {
                 <CustomButton active={active === 'circle'} clickHandler={clickRecord} setActive={setActive} symbol="circle" color="#69d06d"/>
                 <CustomButton active={active === 'play'} clickHandler={clickPlay} setActive={setActive} symbol="play" color="#ac2020"/>
             </div>
-            <div className="timer-container">
-                <p className="stopwatch-time">
+            <div>
+                <p>
                     {playMinutes.toString().padStart(2, "0")}:{playSeconds.toString().padStart(2, "0")}{" / "}
                     {recordMinutes.toString().padStart(2, "0")}:{recordSeconds.toString().padStart(2, "0")}
                 </p>

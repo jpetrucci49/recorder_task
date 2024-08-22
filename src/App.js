@@ -7,9 +7,7 @@ import './App.css';
 function App() {
   const textAreaRef = useRef(null);
 
-  const focusTextArea = () => {
-    textAreaRef.current.focus();
-  }
+  const focusTextArea = () => textAreaRef.current.focus();
 
   return (
     <div className="App">

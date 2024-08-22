@@ -1,3 +1,11 @@
+# Recorder technical task
+
+To run the project, after cloning the repo, run `npm i` to install all dependencies, and run `npm start` to spin up the development server, then visit `localhost:3000` in a browser to view the app.
+
+My first step in tackling this task was to put pen to paper and sketch out the app as described. After mocking up the layout for visual reference, as described below, I bootstrapped the project with `npx create-react-app` using all default settings without any of the optional project templates. I then began stripping the default generated content, and adding the basic structure of the app. After having the basic structure built out, I began adding the functionalities following through the task prompt to implement each of the requested features.
+
+As for critiques, the buttons still don't sync perfectly, and it's possible to get the play button out of sync with its active state. I also would have liked to implement a progress bar beside the record/playback timers, and sync its' selection with the value of the `playTime` state, but I wanted to keep the dependencies to a minimum for the task, and after some research, decided it would be best to focus on specs rather than get rabbit holed on a stretch goal.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
